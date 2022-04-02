@@ -1,16 +1,19 @@
 package ru.skypro;
 
-import java.awt.print.Book;
+
 
 public class Main {
 
     public static void main(String[] args) {
 // *************  ОБЪЕКТЫ И КЛАССЫ (СЛОЖНЫЙ УРОВЕНЬ) *************
-        Book[] book = new Book [10];
+        Book[] book = new Book [12];
+        Author author1 = new Author("Stephen King");
+        Author author2 = new Author("T.Bochkova");
+        Author author3 = new Author("A.Duma");
         Library lib = new Library(book.length);
-        lib.addBook("The Stand", "Stephen King", 1978);
-        lib.addBook("Back side of Moon", "T.Bochkova", 2015);
-        lib.addBook("Free musketeers", "A.Duma", 1958);
+        lib.addBook("The Stand", author1, 1978);
+        lib.addBook("Back side of Moon", author2, 2015);
+        lib.addBook("Free musketeers", author3, 1958);
         lib.printAllBooks();
         String s = "Back side of Moon";
         int y2 = 2000;
@@ -19,5 +22,40 @@ public class Main {
         System.out.println("==== Изменяем год публикации книги по названию " + "'" + s + "'" + " на " + y2);
         lib.setNewYear(s, y2);
         lib.printBooksInformation(s);
+        System.out.println("*****************       задача следующая   **************************");
+        System.out.println("Authors:");
+        Author stephenKing = new Author("Stephen King");
+        Author stephenKing2 = new Author("Stephen King");
+        Author levTolstoy = new Author("Lev Tolstoy");
+        System.out.println("Author copies equal: " + stephenKing.equals(stephenKing2));
+        System.out.println("Author copies equal by hashCode: " + (stephenKing.hashCode() == stephenKing2.hashCode()));
+        System.out.println("Authors equal: " + stephenKing.equals(levTolstoy));
+        System.out.println("Authors equal by hashCode: " + (stephenKing.hashCode() == levTolstoy.hashCode()));
+
+        System.out.println(stephenKing);
+        System.out.println(levTolstoy);
+
+        System.out.println("==============================");
+
+        System.out.println("Books:");
+        Book theStand = new Book("The Stand", stephenKing, 1976);
+        Book theStand2 = new Book("The Stand", stephenKing, 1976);
+        Book warAndPeace = new Book("War and Peace", levTolstoy, 1869);
+
+
+        System.out.println("Book copies equal: " + theStand.equals(theStand2));
+        System.out.println("Book copies equal by hashCode: " + (theStand.hashCode() == theStand2.hashCode()));
+        System.out.println("Books equal: " + theStand.equals(warAndPeace));
+        System.out.println("Books equal by hashCode: " + (theStand.hashCode() == warAndPeace.hashCode()));
+        System.out.println(theStand);
+        System.out.println(warAndPeace);
+
+        System.out.println("==============================");
+
+        Library library = new Library(2);
+        library.addBook2(theStand);
+        library.addBook2(warAndPeace);
+
+        System.out.println(library);
     }
 }

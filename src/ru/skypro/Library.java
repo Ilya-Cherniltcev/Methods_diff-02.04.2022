@@ -1,22 +1,34 @@
 package ru.skypro;
 
+import java.util.Arrays;
+
 public class Library {
     private Book[] book;
     private int bookLength;
-    private String [] name;
+    private Author [] name;
 
 
     public Library(int bookLength) {
         this.bookLength = bookLength;
         this.book = new Book[bookLength];
-        this.name = new String[bookLength];
+        this.name = new Author[bookLength];
     }
 
-    public void addBook(String title, String name, int year) {
+    public void addBook(String title, Author name, int year) {
         for (int i = 0; i < book.length; i++) {
             if (book[i] == null) {
                 book[i] = new Book(title, name, year);
                 this.name[i]= name;
+                return;
+            }
+        }
+        throw new RuntimeException("Все ячейки массива заполнены");
+    }
+    public void addBook2(Book b) {
+        for (int i = 0; i < book.length; i++) {
+            if (book[i] == null) {
+                book[i] = b;
+              //  this.name[i]= name;
                 return;
             }
         }
@@ -48,6 +60,8 @@ public class Library {
         }
     }
 
+
+
     public int getYear (String title) {
         for (int i = 0; i < book.length; i++) {
             String temp;
@@ -61,5 +75,29 @@ public class Library {
         return -1;
     }
 
+    @Override
+    public String toString() {
+        String out = "Library:" + "\n";
+        for ( int i = 0; i < book.length; i++ ) {
+            out += book[i];
+            out += "\n";
+        }
+        return out;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Library library = (Library) o;
+        return Arrays.equals(book, library.book) && Arrays.equals(name, library.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(book);
+        result = 31 * result + Arrays.hashCode(name);
+        return result;
+    }
 }
 
