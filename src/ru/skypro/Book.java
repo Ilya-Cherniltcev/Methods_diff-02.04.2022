@@ -16,7 +16,23 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book: " + title + " by " + author;
+        return "Book: " + title + " by " + author + " " + year;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 
     @Override

@@ -10,10 +10,14 @@ public class Main {
         Author author1 = new Author("Stephen King");
         Author author2 = new Author("T.Bochkova");
         Author author3 = new Author("A.Duma");
+        Book book1 = new Book("The Stand", author1, 1978);
+        Book book2 = new Book("Back side of Moon", author2, 2015);
+        Book book3 = new Book("Free musketeers", author3, 1958);
+
         Library lib = new Library(book.length);
-        lib.addBook("The Stand", author1, 1978);
-        lib.addBook("Back side of Moon", author2, 2015);
-        lib.addBook("Free musketeers", author3, 1958);
+        lib.addBook(book1);
+        lib.addBook(book2);
+        lib.addBook(book3);
         lib.printAllBooks();
         String s = "Back side of Moon";
         int y2 = 2000;
@@ -53,8 +57,8 @@ public class Main {
         System.out.println("==============================");
 
         Library library = new Library(2);
-        library.addBook2(theStand);
-        library.addBook2(warAndPeace);
+        library.addBook(theStand);
+        library.addBook(warAndPeace);
 
         System.out.println(library);
     }
